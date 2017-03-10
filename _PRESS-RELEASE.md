@@ -17,28 +17,31 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Hex: The Hexagonal Board Game
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Hex is for anyone who enjoys playing strategy board games.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Hex is a two player game, played on a hexagonal grid, with the objective of linking 
+  > opposite sides of the board together. Players take turns claming spots on the grid,
+  > trying to create a connected path between their two sides. Any spot on the board 
+  > can be claimed. Think strategically about the path you want to set up!
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > The problem: My friend and I are bored.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Hex is a fun game to play and get rid of the boredom.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > You'll spend hours playing hex.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Read the rules, set your usernames, and start playing!
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > I'm never bored while playing hex with my friends.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Follow the instructions in the README!
