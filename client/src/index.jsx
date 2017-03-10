@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import Hexagon from 'react-hexagon'
 
-ReactDom.render(<h1>Hello, world!</h1>, document.getElementById('app'));
+ReactDom.render(<Hexagon style={{stroke: '#42873f'}}/>, document.getElementById('app'));
