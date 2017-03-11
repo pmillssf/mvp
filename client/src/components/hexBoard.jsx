@@ -45,10 +45,10 @@ export default class HexBoard extends React.Component {
 			initialHexBoard.push(new HexPiece(i+1));
 		}
 
-		// set up connections between hexPieces
+		// set up connections between hexPieces  
 		for (let i = 0; i < 25; i++) {
 			var k = i + 1;
-			if (k === 7 || 8 || 9 || 12 || 13 || 14 || 17 || 18 || 19) {
+			if (k === 7 || k === 8 || k === 9 || k === 12 || k === 13 || k === 14 || k === 17 || k === 18 || k === 19) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
@@ -57,55 +57,75 @@ export default class HexBoard extends React.Component {
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if ( k === 2 || 3 || 4) {
-
+			} else if ( k === 2 || k === 3 || k === 4) {
+				initialHexBoard[i].topLeft = {capture: 'green'};
+				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if (k === 22 || 23 || 24) {
+			} else if (k === 22 || k === 23 || k === 24) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
+				initialHexBoard[i].bottomLeft = {capture: 'green'};
+				initialHexBoard[i].bottomRight = {capture: 'green'};
 
-			} else if (k === 6 || 11 || 16) {
+			} else if (k === 6 || k === 11 || k === 16) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
+				initialHexBoard[i].left = {capture: 'green'};
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomLeft = {capture: 'green'};
 
-			} else if (k === 10 || 15 || 20) {
+			} else if (k === 10 || k === 15 || k === 20) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
+				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].left = initialHexBoard[i - 1];
+				initialHexBoard[i].right = {capture: 'green'};
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
 			} else if (k === 1) {
-
+				initialHexBoard[i].topLeft = {capture: 'green'};
+				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].right = initialHexBoard[i + 1];
+				initialHexBoard[i].left = {capture: 'green'};
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomLeft = {capture: 'green'};
 
 			} else if (k === 25) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
+				initialHexBoard[i].right = {capture: 'green'};
+				initialHexBoard[i].topRight = {capture: 'green'};
+				initialHexBoard[i].bottomLeft = {capture: 'green'};
+				initialHexBoard[i].bottomRight = {capture: 'green'};
 
 			} else if (k === 21) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
+				initialHexBoard[i].bottomLeft = {capture: 'green'};
+				initialHexBoard[i].bottomRight = {capture: 'green'};
+				initialHexBoard[i].left = {capture: 'green'};
 
 			} else if (k === 5) {
 
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].right = {capture: 'green'};
+				initialHexBoard[i].topRight = {capture: 'green'};
+				initialHexBoard[i].topLeft = {capture: 'green'};
 			}
 		}
 
@@ -132,7 +152,13 @@ export default class HexBoard extends React.Component {
 				// queue.push(redtop[i])
 				queue.push(redTop[i]);
 				// set visitedHexs = {}
-				var visitedHexs = {};
+				var visitedHexs = {
+					0: false, 1: false, 2: false, 3: false, 4: false,
+					 5: false, 6: false, 7: false, 8: false, 9: false, 
+					 10: false, 11: false, 12: false, 13: false, 14: false, 
+					 15: false, 16: false, 17: false, 18: false, 19: false, 
+					 20: false, 21: false, 22: false, 23: false, 24: false, 
+					 25: false};
 				// while (queue.length > 0)
 				while (queue.length > 0) {
 				  // set currentHex = queue.shift()
@@ -140,28 +166,28 @@ export default class HexBoard extends React.Component {
 				  // vistedHexs[currentHex.index] = true
 				  visitedHexs[currentHex.index] = true;
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
-				  if (currentHex.index === 21 || 22 || 23 || 24 || 25) {
+				  if (currentHex.index === 21 || currentHex.index === 22 || currentHex.index ===  23 || currentHex.index === 24 || currentHex.index === 25) {
 				   // return true
 				   console.log('red winner!!!')
 				  	return true;
 				  } else {
 
-				  	if (currentHex.left.capture === 'red' && vistedHexs[currentHex.left.index] === undefined) {
+				  	if (currentHex.left.capture === 'Red' && visitedHexs[currentHex.left.index] === false) {
 				  	 queue.push(currentHex.left);
 				  	 } 
-				  	if (currentHex.right.capture === 'red' && vistedHexs[currentHex.right.index] === undefined) {
+				  	if (currentHex.right.capture === 'Red' && visitedHexs[currentHex.right.index] === false) {
 				  	 queue.push(currentHex.right);
 				  	}
-				  	if (currentHex.topLeft.capture === 'red' && vistedHexs[currentHex.topLeft.index] === undefined) {
+				  	if (currentHex.topLeft.capture === 'Red' && visitedHexs[currentHex.topLeft.index] === false) {
 				  	 queue.push(currentHex.topLeft);
 				  	}
-				  	if (currentHex.topRight.capture === 'red' && vistedHexs[currentHex.topRight.index] === undefined) {
+				  	if (currentHex.topRight.capture === 'Red' && visitedHexs[currentHex.topRight.index] === false) {
 				  	 queue.push(currentHex.topRight);
 				  	}
-				  	if (currentHex.bottomLeft.capture === 'red' && vistedHexs[currentHex.bottomLeft.index] === undefined) {
+				  	if (currentHex.bottomLeft.capture === 'Red' && visitedHexs[currentHex.bottomLeft.index] === false) {
 				  	 queue.push(currentHex.bottomLeft);
 				  	}
-				  	if (currentHex.bottomRight.capture === 'red' && vistedHexs[currentHex.bottomRight.index] === undefined) {
+				  	if (currentHex.bottomRight.capture === 'Red' && visitedHexs[currentHex.bottomRight.index] === false) {
 				  	 queue.push(currentHex.bottomRight);
 				  	}
 				  }
@@ -190,7 +216,13 @@ export default class HexBoard extends React.Component {
 				// queue.push(redtop[i])
 				queue.push(blueSide[i]);
 				// set visitedHexs = {}
-				var visitedHexs = {};
+				var visitedHexs = {
+					0: false, 1: false, 2: false, 3: false, 4: false,
+					 5: false, 6: false, 7: false, 8: false, 9: false, 
+					 10: false, 11: false, 12: false, 13: false, 14: false, 
+					 15: false, 16: false, 17: false, 18: false, 19: false, 
+					 20: false, 21: false, 22: false, 23: false, 24: false, 
+					 25: false};
 				// while (queue.length > 0)
 				while (queue.length > 0) {
 				  // set currentHex = queue.shift()
@@ -198,28 +230,28 @@ export default class HexBoard extends React.Component {
 				  // vistedHexs[currentHex.index] = true
 				  visitedHexs[currentHex.index] = true;
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
-				  if (currentHex.index === 5 || 10 || 15 || 20 || 25) {
+				  if (currentHex.index === 5 || currentHex.index === 10 || currentHex.index === 15 || currentHex.index === 20 || currentHex.index === 25) {
 				   // return true
 				   console.log('Blue true');
 				  	return true;
 				  } else {
 
-				  	if (currentHex.left.capture === 'red' && vistedHexs[currentHex.left.index] === undefined) {
+				  	if (currentHex.left.capture === 'Blue' && visitedHexs[currentHex.left.index] === false) {
 				  	 queue.push(currentHex.left);
 				  	 } 
-				  	if (currentHex.right.capture === 'red' && vistedHexs[currentHex.right.index] === undefined) {
+				  	if (currentHex.right.capture === 'Blue' && visitedHexs[currentHex.right.index] === false) {
 				  	 queue.push(currentHex.right);
 				  	}
-				  	if (currentHex.topLeft.capture === 'red' && vistedHexs[currentHex.topLeft.index] === undefined) {
+				  	if (currentHex.topLeft.capture === 'Blue' && visitedHexs[currentHex.topLeft.index] === false) {
 				  	 queue.push(currentHex.topLeft);
 				  	}
-				  	if (currentHex.topRight.capture === 'red' && vistedHexs[currentHex.topRight.index] === undefined) {
+				  	if (currentHex.topRight.capture === 'Blue' && visitedHexs[currentHex.topRight.index] === false) {
 				  	 queue.push(currentHex.topRight);
 				  	}
-				  	if (currentHex.bottomLeft.capture === 'red' && vistedHexs[currentHex.bottomLeft.index] === undefined) {
+				  	if (currentHex.bottomLeft.capture === 'Blue' && visitedHexs[currentHex.bottomLeft.index] === false) {
 				  	 queue.push(currentHex.bottomLeft);
 				  	}
-				  	if (currentHex.bottomRight.capture === 'red' && vistedHexs[currentHex.bottomRight.index] === undefined) {
+				  	if (currentHex.bottomRight.capture === 'Blue' && visitedHexs[currentHex.bottomRight.index] === false) {
 				  	 queue.push(currentHex.bottomRight);
 				  	}
 				  }
@@ -227,6 +259,7 @@ export default class HexBoard extends React.Component {
 			}
 		}
 		// return false
+		console.log('keep trying blue');
 		return false;
 	}	
 
