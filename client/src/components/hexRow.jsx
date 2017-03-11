@@ -4,9 +4,8 @@ import Hexagon from 'react-hexagon';
 import Hex from './hex.jsx';
 
 export default function HexRow(props) {
-	return <div>
-			<Hexagon style={{stroke: '#42873f'}} className="hex1"/>
-			<Hexagon style={{stroke: '#42873f'}} className="hex2"/>
-			<Hexagon style={{stroke: '#42873f'}} className="hex3"/>
+	return <div> {this.props.hexs.map((hex) => 
+		<Hex style={{stroke: '#42873f'}} className="hex1"/>
+		)}
 	</div>
 }
