@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Hexagon from 'react-hexagon';
+import HexRow from './components/hexRow.jsx';
 
 class App extends React.Component {
 	constructor(props) {
