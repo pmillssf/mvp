@@ -9,6 +9,7 @@ export default class HexBoard extends React.Component {
 			currentTurn: 'Red', 
 		}
 		this.initalizeBoard.bind(this);
+		this.hexClicked.bind(this);
 	}
 
 	initalizeBoard() {
@@ -99,6 +100,61 @@ export default class HexBoard extends React.Component {
 		this.setState({
 			hexBoard: initialHexBoard
 		});
+	}
+
+	redWinCondition() {
+		//set an array of red top hexs
+		var redTop = this.state.hexBoard.slice(0, 6);
+		// loop over the top array
+		for (let i = 0; i < redTop.length; i++) {
+			// if redtop[i].capture === 'red'
+			if (redTop[i].capture === 'red') {
+				// define queue array
+				var queue = [];
+				// queue.push(redtop[i])
+				queue.push(redTop[i]);
+				// set visitedHexs = {}
+				var visitedHexs = {};
+				// while (queue.length > 0)
+				while (queue.length > 0) {
+				  // set currentHex = queue.shift()
+				  var currentHex = queue.shift();
+				  // vistedHexs[currentHex.index] = true
+				  visitedHexs[currentHex.index] = true;
+				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
+				  if (currentHex.index === 21 || 22 || 23 || 24 || 25) {
+				   // return true
+				  	return true;
+				  } else {
+
+				  	if (currentHex.left.capture === 'red' && vistedHexs[currentHex.left.index] === undefined) {
+				  	 queue.push(currentHex.left);
+				  	 } 
+				  	if (currentHex.right.capture === 'red' && vistedHexs[currentHex.right.index] === undefined) {
+				  	 queue.push(currentHex.right);
+				  	}
+				  	if (currentHex.topLeft.capture === 'red' && vistedHexs[currentHex.topLeft.index] === undefined) {
+				  	 queue.push(currentHex.topLeft);
+				  	}
+				  	if (currentHex.topRight.capture === 'red' && vistedHexs[currentHex.topRight.index] === undefined) {
+				  	 queue.push(currentHex.topRight);
+				  	}
+				  	if (currentHex.bottomLeft.capture === 'red' && vistedHexs[currentHex.bottomLeft.index] === undefined) {
+				  	 queue.push(currentHex.bottomLeft);
+				  	}
+				  	if (currentHex.bottomRight.capture === 'red' && vistedHexs[currentHex.bottomRight.index] === undefined) {
+				  	 queue.push(currentHex.bottomRight);
+				  	}
+				  }
+				}
+			}
+		}
+		// return false
+		return false;
+	}
+
+	hexClicked(index) {
+
 	}
 
 
