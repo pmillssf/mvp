@@ -153,6 +153,62 @@ export default class HexBoard extends React.Component {
 		return false;
 	}
 
+	blueWinCondition() {
+		//set an array of red top hexs
+		var blueSide = [];
+		blueSide.push(this.state.hexBoard[1]);
+		blueSide.push(this.state.hexBoard[6]);
+		blueSide.push(this.state.hexBoard[11]);
+		blueSide.push(this.state.hexBoard[16]);
+		blueSide.push(this.state.hexBoard[21]);
+		// loop over the top array
+		for (let i = 0; i < blueSide.length; i++) {
+			// if redtop[i].capture === 'red'
+			if (blueSide[i].capture === 'red') {
+				// define queue array
+				var queue = [];
+				// queue.push(redtop[i])
+				queue.push(blueSide[i]);
+				// set visitedHexs = {}
+				var visitedHexs = {};
+				// while (queue.length > 0)
+				while (queue.length > 0) {
+				  // set currentHex = queue.shift()
+				  var currentHex = queue.shift();
+				  // vistedHexs[currentHex.index] = true
+				  visitedHexs[currentHex.index] = true;
+				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
+				  if (currentHex.index === 5 || 10 || 15 || 20 || 25) {
+				   // return true
+				  	return true;
+				  } else {
+
+				  	if (currentHex.left.capture === 'red' && vistedHexs[currentHex.left.index] === undefined) {
+				  	 queue.push(currentHex.left);
+				  	 } 
+				  	if (currentHex.right.capture === 'red' && vistedHexs[currentHex.right.index] === undefined) {
+				  	 queue.push(currentHex.right);
+				  	}
+				  	if (currentHex.topLeft.capture === 'red' && vistedHexs[currentHex.topLeft.index] === undefined) {
+				  	 queue.push(currentHex.topLeft);
+				  	}
+				  	if (currentHex.topRight.capture === 'red' && vistedHexs[currentHex.topRight.index] === undefined) {
+				  	 queue.push(currentHex.topRight);
+				  	}
+				  	if (currentHex.bottomLeft.capture === 'red' && vistedHexs[currentHex.bottomLeft.index] === undefined) {
+				  	 queue.push(currentHex.bottomLeft);
+				  	}
+				  	if (currentHex.bottomRight.capture === 'red' && vistedHexs[currentHex.bottomRight.index] === undefined) {
+				  	 queue.push(currentHex.bottomRight);
+				  	}
+				  }
+				}
+			}
+		}
+		// return false
+		return false;
+	}	
+
 	hexClicked(index) {
 
 	}
