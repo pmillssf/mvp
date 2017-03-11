@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISITS hex;
+
+CREATE DATABASE hex;
+
+USE hex;
+
+CREATE TABLE users (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	username VARCHAR(10) UNIQUE,
+	wins INTEGER NOT NULL
+)
+
+CREATE TABLE savedgames (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	playerOne VARCHAR(10),
+	playerTwo VARCHAR(10),
+	gamename VARCHAR(25),
+	gamestate VARCHAR(30),
+	savedate VARCHAR(30)
+)
