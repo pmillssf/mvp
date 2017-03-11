@@ -10,6 +10,8 @@ export default class HexBoard extends React.Component {
 		}
 		this.initalizeBoard.bind(this);
 		this.hexClicked.bind(this);
+		this.redWinCondition.bind(this);
+		this.blueWinCondition.bind(this);
 	}
 
 	initalizeBoard() {
@@ -18,7 +20,7 @@ export default class HexBoard extends React.Component {
 		class HexPiece {
 			constructor(index) {
 				this.index = index;
-				this.capture = 'no';
+				this.capture = 'green';
 				this.topLeft;
 				this.topRight
 				this.left;
@@ -30,13 +32,13 @@ export default class HexBoard extends React.Component {
 		var initialHexBoard = [];
 		// fill in the array with 25 hexPieces
 		for (let i = 0; i < 25; i++) {
-			initialHexBoard.push(new HexPiece(i));
+			initialHexBoard.push(new HexPiece(i+1));
 		}
 
 		// set up connections between hexPieces
 		for (let i = 0; i < 25; i++) {
-
-			if (i === 7 || 8 || 9 || 12 || 13 || 14 || 17 || 18 || 19) {
+			var k = i + 1;
+			if (k === 7 || 8 || 9 || 12 || 13 || 14 || 17 || 18 || 19) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
@@ -45,51 +47,51 @@ export default class HexBoard extends React.Component {
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if ( i === 2 || 3 || 4) {
+			} else if ( k === 2 || 3 || 4) {
 
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if (i === 22 || 23 || 24) {
+			} else if (k === 22 || 23 || 24) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 
-			} else if (i === 6 || 11 || 16) {
+			} else if (k === 6 || 11 || 16) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if (i === 10 || 15 || 20) {
+			} else if (k === 10 || 15 || 20) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if (i === 1) {
+			} else if (k === 1) {
 
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
 
-			} else if (i === 25) {
+			} else if (k === 25) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 
-			} else if (i === 21) {
+			} else if (k === 21) {
 
 				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
 				initialHexBoard[i].topRight = initialHexBoard[i - 4];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 
-			} else if (i === 5) {
+			} else if (k === 5) {
 
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
