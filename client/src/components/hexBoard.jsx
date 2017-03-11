@@ -104,7 +104,7 @@ export default class HexBoard extends React.Component {
 
 	redWinCondition() {
 		//set an array of red top hexs
-		var redTop = this.state.hexBoard.slice(0, 6);
+		var redTop = this.state.hexBoard.slice(0, 5);
 		// loop over the top array
 		for (let i = 0; i < redTop.length; i++) {
 			// if redtop[i].capture === 'red'

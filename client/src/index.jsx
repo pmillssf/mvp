@@ -17,16 +17,7 @@ class App extends React.Component {
 				<button>start game</button>
 				<button>Load save</button>
 			</div>
-			<div>
-				<div>
-					<div>Player Turn <button>save</button></div>
-				</div>
-				<div>HexRow_1</div>
-				<div>HexRow_2</div>
-				<div>HexRow_3</div>
-				<div>HexRow_4</div>
-				<div>HexRow_5</div>
-			</div>
+			<div>HexBoard</div>
 		</div>
 	}
 }
