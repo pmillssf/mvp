@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Hexagon from 'react-hexagon';
 import HexRow from './components/hexRow.jsx';
+import HexBoard from './components/hexBoard.jsx'
 
 class App extends React.Component {
 	constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
 				<button>start game</button>
 				<button>Load save</button>
 			</div>
-			<div>HexBoard</div>
+			<HexBoard />
 		</div>
 	}
 }

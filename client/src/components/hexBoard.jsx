@@ -1,5 +1,6 @@
 import React from 'react';
-import HexRow from './components/hexRow.jsx';
+import Hex from './hex.jsx';
+import Hexagon from 'react-hexagon';
 
 export default class HexBoard extends React.Component {
 	constructor(props){
@@ -8,10 +9,14 @@ export default class HexBoard extends React.Component {
 			hexBoard: [], 
 			currentTurn: 'Red', 
 		}
-		this.initalizeBoard.bind(this);
-		this.hexClicked.bind(this);
-		this.redWinCondition.bind(this);
-		this.blueWinCondition.bind(this);
+		this.intitalizeBoad = this.initalizeBoard.bind(this);
+		this.hexClicked = this.hexClicked.bind(this);
+		this.redWinCondition = this.redWinCondition.bind(this);
+		this.blueWinCondition = this.blueWinCondition.bind(this);
+	}
+
+	componentDidMount() {
+		this.initalizeBoard();
 	}
 
 	initalizeBoard() {
@@ -105,12 +110,13 @@ export default class HexBoard extends React.Component {
 	}
 
 	redWinCondition() {
+		console.log('red check')
 		//set an array of red top hexs
 		var redTop = this.state.hexBoard.slice(0, 5);
 		// loop over the top array
 		for (let i = 0; i < redTop.length; i++) {
 			// if redtop[i].capture === 'red'
-			if (redTop[i].capture === 'red') {
+			if (redTop[i].capture === 'Red') {
 				// define queue array
 				var queue = [];
 				// queue.push(redtop[i])
@@ -126,6 +132,7 @@ export default class HexBoard extends React.Component {
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
 				  if (currentHex.index === 21 || 22 || 23 || 24 || 25) {
 				   // return true
+				   console.log('red winner!!!')
 				  	return true;
 				  } else {
 
@@ -152,6 +159,7 @@ export default class HexBoard extends React.Component {
 			}
 		}
 		// return false
+		console.log('keep trying');
 		return false;
 	}
 
@@ -166,7 +174,7 @@ export default class HexBoard extends React.Component {
 		// loop over the top array
 		for (let i = 0; i < blueSide.length; i++) {
 			// if redtop[i].capture === 'red'
-			if (blueSide[i].capture === 'red') {
+			if (blueSide[i].capture === 'Blue') {
 				// define queue array
 				var queue = [];
 				// queue.push(redtop[i])
@@ -182,6 +190,7 @@ export default class HexBoard extends React.Component {
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
 				  if (currentHex.index === 5 || 10 || 15 || 20 || 25) {
 				   // return true
+				   console.log('Blue true');
 				  	return true;
 				  } else {
 
@@ -212,20 +221,27 @@ export default class HexBoard extends React.Component {
 	}	
 
 	hexClicked(index) {
+		console.log('clicked', index);
+		if (this.state.hexBoard[index].capture === 'green') {
+			var boardCopy = this.state.hexBoard.slice(0,25);
+			boardCopy[index].capture = this.state.currentTurn;
+			if (this.state.currentTurn === 'Red') {
+				this.redWinCondition();
+			} 
 
+			if (this.state.currentTurn === 'Blue') {
+				this.blueWinCondition();
+			} 
+			this.setState({hexboard: boardCopy, currentTurn: this.state.currentTurn === 'Red' ? 'Blue' : 'Red'});
+		}
 	}
 
-
 	render() {
+		var context = this;
 		return (
 			<div>
 			<div>{this.state.currentTurn} Player</div>
-			<HexRow hexs=[1, 2, 3, 4, 5] />
-			<HexRow hexs=[6, 7, 8, 9, 10] />
-			<HexRow hexs=[11, 12, 13, 14, 15] />
-			<HexRow hexs=[16, 17, 18, 19, 20] />
-			<HexRow hexs=[21, 22, 23, 24, 25] />
-
+			{this.state.hexBoard.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			)
 	}

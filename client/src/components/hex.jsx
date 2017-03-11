@@ -4,6 +4,6 @@ import Hexagon from 'react-hexagon';
 
 export default function Hex(props) {
 	return (
-		<Hexagon/>
+		<Hexagon style={{fill: props.style, stroke: 'black'}}/>
 		)
 }
