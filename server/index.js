@@ -37,6 +37,22 @@ app.post('/user', function (req, res) {
 			res.status(201).send(JSON.stringify('Added!'));
 		}
 	})
+});
+
+app.get('/games', function (req, res) {
+	var players = url.parse(req.url).query.split('&')
+	var playerOne = players[0].split('=')[1];
+	var playerTwo = players[1].split('=')[1];
+	console.log('playerOne', playerOne, 'playerTwo', playerTwo)
+	db.getGames(playerOne, playerTwo, function (err, result) {
+		if (err) {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(400).send(JSON.stringify('Failed Query'));
+		} else {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(200).send(JSON.stringify(result));
+		}
+	})
 })
 
 app.listen(3000, function() {
