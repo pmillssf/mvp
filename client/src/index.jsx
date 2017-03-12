@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import Hexagon from 'react-hexagon';
 import HexRow from './components/hexRow.jsx';
 import HexBoard from './components/hexBoard.jsx'
+import LeaderBoard from './components/leaderBoard.jsx'
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -11,12 +12,15 @@ class App extends React.Component {
 		this.state = {
 			playerOne: 'Red',
 			playerTwo: 'Blue',
-			startGame: false
+			startGame: false, 
+			leaderBoard: false,
+			leaders: [],
 		}
 		this.playerOneChange = this.playerOneChange.bind(this);
 		this.playerTwoChange = this.playerTwoChange.bind(this);
 		this.renderGame = this.renderGame.bind(this);
 		this.addPlayersToDataBase = this.addPlayersToDataBase.bind(this);
+		this.renderLeaderBoard = this.renderLeaderBoard.bind(this);
 	}
 
 	playerOneChange(e) {
@@ -30,6 +34,7 @@ class App extends React.Component {
 			playerTwo: e.target.value
 		})
 	}
+
 
 	addPlayersToDataBase(username) {
 		console.log(username);
@@ -67,6 +72,26 @@ class App extends React.Component {
 			startGame: !this.state.startGame
 		})
 	}
+
+	renderLeaderBoard() {
+		var context = this;
+		$.ajax({
+			url: 'http://localhost:3000/leaders',
+			method: 'GET',
+			success: (data) => {
+				context.setState({
+					leaders: data.slice(0, 10)
+				})
+			},
+			error: function(error) {
+				console.log(error)
+			}
+		});
+		this.setState({
+			leaderBoard: !this.state.leaderBoard
+		})
+
+	}
 	render() {
 		return <div>
 			<h1>Welcome</h1>
@@ -78,8 +103,11 @@ class App extends React.Component {
 			<div>
 				<button onClick={this.renderGame}>New Game</button>
 				<button>Load Game</button>
+				<button onClick={this.renderLeaderBoard}>Leader Board</button>
 			</div>
 			{this.state.startGame ? <HexBoard playerOne={this.state.playerOne} playerTwo = {this.state.playerTwo}/> : ''}
+			{this.state.leaderBoard ? <LeaderBoard leaders = {this.state.leaders}/> : ''}
+
 		</div>
 	}
 }

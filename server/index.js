@@ -42,6 +42,14 @@ app.options('/win', function(req, res) {
   res.end();
 });
 
+app.options('/leaders', function(req, res) {
+  res.writeHead(200, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  })
+  res.end();
+});
+
 app.get('/users', function (req, res) {
 	console.log(req.url);
 	var username = url.parse(req.url).query.split('=')[1];
