@@ -298,19 +298,19 @@ export default class HexBoard extends React.Component {
 		return (
 			<div>
 			<div>{this.state.currentTurn} Player</div>
-			<div>
+			<div id="row_1">
 			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
-			<div>
+			<div id="row_2">
 			  {this.state.hexRow_2.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
-			<div>
+			<div id="row_3">
 			  {this.state.hexRow_3.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
-			<div>
+			<div id="row_4">
 			  {this.state.hexRow_4.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
-			<div>
+			<div id="row_5">
 			  {this.state.hexRow_5.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			</div>
