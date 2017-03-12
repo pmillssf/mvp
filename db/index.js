@@ -54,7 +54,7 @@ function saveGame(gameObj, callback) {
 }
 
 function leaderBoard(callback) {
-	connection.query('SELECT * from users', function (err, results) {
+	connection.query('SELECT * from users order by users.wins desc', function (err, results) {
 		if (err) {
 			callback(err, null);
 		} else {
