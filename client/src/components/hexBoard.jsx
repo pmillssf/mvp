@@ -236,6 +236,7 @@ export default class HexBoard extends React.Component {
 		blueSide.push(this.state.hexBoard[55]);
 		blueSide.push(this.state.hexBoard[66]);
 		blueSide.push(this.state.hexBoard[77]);
+		blueSide.push(this.state.hexBoard[88]);
 		blueSide.push(this.state.hexBoard[99]);
 		blueSide.push(this.state.hexBoard[110]);
 		// loop over the top array
