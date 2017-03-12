@@ -13,7 +13,13 @@ export default class HexBoard extends React.Component {
 			hexRow_2: [],
 			hexRow_3: [],
 			hexRow_4: [],
-			hexRow_5: [] 
+			hexRow_5: [],
+			hexRow_6: [],
+			hexRow_7: [], 
+			hexRow_8: [], 
+			hexRow_9: [], 
+			hexRow_10: [],
+			hexRow_11: [],   
 		}
 		this.intitalizeBoad = this.initalizeBoard.bind(this);
 		this.hexClicked = this.hexClicked.bind(this);
@@ -45,88 +51,89 @@ export default class HexBoard extends React.Component {
 		}
 		var initialHexBoard = [];
 		// fill in the array with 25 hexPieces
-		for (let i = 0; i < 25; i++) {
+		for (let i = 0; i < 121; i++) {
 			initialHexBoard.push(new HexPiece(i+1));
 		}
 
 		// set up connections between hexPieces  
-		for (let i = 0; i < 25; i++) {
+		for (let i = 0; i < 121; i++) {
 			var k = i + 1;
-			if (k === 7 || k === 8 || k === 9 || k === 12 || k === 13 || k === 14 || k === 17 || k === 18 || k === 19) {
+			if ( (k >= 13 && k <= 21) || (k >= 24 && k <= 32) || (k >= 35 && k <= 43) || (k >= 46 && k <= 54) || (k >= 57 && k <= 65)
+			 || (k >= 68 && k <= 76) || (k >= 79 && k <= 87) || (k >= 90 && k <= 98) || (k >= 101 && k <= 109) ) {
 
-				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
-				initialHexBoard[i].topRight = initialHexBoard[i - 4];
+				initialHexBoard[i].topLeft = initialHexBoard[i - 11];
+				initialHexBoard[i].topRight = initialHexBoard[i - 10];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
-				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
-				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomLeft = initialHexBoard[i + 10];
+				initialHexBoard[i].bottomRight = initialHexBoard[i + 11];
 
-			} else if ( k === 2 || k === 3 || k === 4) {
+			} else if ( k >= 2 && k <= 10) {
 				initialHexBoard[i].topLeft = {capture: 'green'};
 				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
-				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
-				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomLeft = initialHexBoard[i + 10];
+				initialHexBoard[i].bottomRight = initialHexBoard[i + 11];
 
-			} else if (k === 22 || k === 23 || k === 24) {
+			} else if (k >= 112 && k <= 120) {
 
-				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
-				initialHexBoard[i].topRight = initialHexBoard[i - 4];
+				initialHexBoard[i].topLeft = initialHexBoard[i - 11];
+				initialHexBoard[i].topRight = initialHexBoard[i - 10];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomLeft = {capture: 'green'};
 				initialHexBoard[i].bottomRight = {capture: 'green'};
 
-			} else if (k === 6 || k === 11 || k === 16) {
+			} else if (k === 12 || k === 23 || k === 34 || k === 45 || k === 56 || k === 67 || k === 78 || k === 89 || k === 100 ) {
 
-				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
-				initialHexBoard[i].topRight = initialHexBoard[i - 4];
+				initialHexBoard[i].topLeft = initialHexBoard[i - 11];
+				initialHexBoard[i].topRight = initialHexBoard[i - 10];
 				initialHexBoard[i].left = {capture: 'green'};
 				initialHexBoard[i].right = initialHexBoard[i + 1];
-				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomRight = initialHexBoard[i + 11];
 				initialHexBoard[i].bottomLeft = {capture: 'green'};
 
-			} else if (k === 10 || k === 15 || k === 20) {
+			} else if (k === 22 || k === 33 || k === 44 || k === 55 || k === 66 || k === 77 || k === 88 || k === 99 || k === 110 ) {
 
-				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
+				initialHexBoard[i].topLeft = initialHexBoard[i - 11];
 				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = {capture: 'green'};
-				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
-				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomLeft = initialHexBoard[i + 10];
+				initialHexBoard[i].bottomRight = initialHexBoard[i + 11];
 
 			} else if (k === 1) {
 				initialHexBoard[i].topLeft = {capture: 'green'};
 				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].left = {capture: 'green'};
-				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomRight = initialHexBoard[i + 11];
 				initialHexBoard[i].bottomLeft = {capture: 'green'};
 
-			} else if (k === 25) {
+			} else if (k === 121) {
 
-				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
+				initialHexBoard[i].topLeft = initialHexBoard[i - 11];
 				initialHexBoard[i].left = initialHexBoard[i - 1];
 				initialHexBoard[i].right = {capture: 'green'};
 				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].bottomLeft = {capture: 'green'};
 				initialHexBoard[i].bottomRight = {capture: 'green'};
 
-			} else if (k === 21) {
+			} else if (k === 111) {
 
-				initialHexBoard[i].topLeft = initialHexBoard[i - 5];
-				initialHexBoard[i].topRight = initialHexBoard[i - 4];
+				initialHexBoard[i].topLeft = initialHexBoard[i - 11];
+				initialHexBoard[i].topRight = initialHexBoard[i - 10];
 				initialHexBoard[i].right = initialHexBoard[i + 1];
 				initialHexBoard[i].bottomLeft = {capture: 'green'};
 				initialHexBoard[i].bottomRight = {capture: 'green'};
 				initialHexBoard[i].left = {capture: 'green'};
 
-			} else if (k === 5) {
+			} else if (k === 11) {
 
 				initialHexBoard[i].left = initialHexBoard[i - 1];
-				initialHexBoard[i].bottomLeft = initialHexBoard[i + 4];
-				initialHexBoard[i].bottomRight = initialHexBoard[i + 5];
+				initialHexBoard[i].bottomLeft = initialHexBoard[i + 10];
+				initialHexBoard[i].bottomRight = initialHexBoard[i + 11];
 				initialHexBoard[i].right = {capture: 'green'};
 				initialHexBoard[i].topRight = {capture: 'green'};
 				initialHexBoard[i].topLeft = {capture: 'green'};
@@ -135,18 +142,24 @@ export default class HexBoard extends React.Component {
 
 		this.setState({
 			hexBoard: initialHexBoard,
-			hexRow_1: initialHexBoard.slice(0, 5),
-			hexRow_2: initialHexBoard.slice(5, 10),
-			hexRow_3: initialHexBoard.slice(10, 15),
-			hexRow_4: initialHexBoard.slice(15, 20),
-			hexRow_5: initialHexBoard.slice(20, 25)
+			hexRow_1: initialHexBoard.slice(0, 11),
+			hexRow_2: initialHexBoard.slice(11, 22),
+			hexRow_3: initialHexBoard.slice(22, 33),
+			hexRow_4: initialHexBoard.slice(33, 44),
+			hexRow_5: initialHexBoard.slice(44, 55),
+			hexRow_6: initialHexBoard.slice(55, 66),
+			hexRow_7: initialHexBoard.slice(66, 77),
+			hexRow_8: initialHexBoard.slice(77, 88),
+			hexRow_9: initialHexBoard.slice(88, 99),
+			hexRow_10: initialHexBoard.slice(99, 110),
+			hexRow_11: initialHexBoard.slice(110, 121)
 		});
 	}
 
 	redWinCondition() {
 		console.log('red check')
 		//set an array of red top hexs
-		var redTop = this.state.hexBoard.slice(0, 5);
+		var redTop = this.state.hexBoard.slice(0, 11);
 		// loop over the top array
 		for (let i = 0; i < redTop.length; i++) {
 			// if redtop[i].capture === 'red'
@@ -157,12 +170,20 @@ export default class HexBoard extends React.Component {
 				queue.push(redTop[i]);
 				// set visitedHexs = {}
 				var visitedHexs = {
-					0: false, 1: false, 2: false, 3: false, 4: false,
-					 5: false, 6: false, 7: false, 8: false, 9: false, 
-					 10: false, 11: false, 12: false, 13: false, 14: false, 
-					 15: false, 16: false, 17: false, 18: false, 19: false, 
-					 20: false, 21: false, 22: false, 23: false, 24: false, 
-					 25: false};
+					0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 
+					10: false, 11: false, 12: false, 13: false, 14: false, 15: false, 16: false, 17: false, 18: false, 
+					19: false, 20: false, 21: false, 22: false, 23: false, 24: false, 25: false, 26: false, 27: false, 
+					28: false, 29: false, 30: false, 31: false, 32: false, 33: false, 34: false, 35: false, 36: false, 
+					37: false, 38: false, 39: false, 40: false, 41: false, 42: false, 43: false, 44: false, 45: false, 
+					46: false, 47: false, 48: false, 49: false, 50: false, 51: false, 52: false, 53: false, 54: false, 
+					55: false, 56: false, 57: false, 58: false, 59: false, 60: false, 61: false, 62: false, 63: false, 
+					64: false, 65: false, 66: false, 67: false, 68: false, 69: false, 70: false, 71: false, 72: false, 
+					73: false, 74: false, 75: false, 76: false, 77: false, 78: false, 79: false, 80: false, 81: false, 
+					82: false, 83: false, 84: false, 85: false, 86: false, 87: false, 88: false, 89: false, 90: false, 
+					91: false, 92: false, 93: false, 94: false, 95: false, 96: false, 97: false, 98: false, 99: false, 
+					100: false, 101: false, 102: false, 103: false, 104: false, 105: false, 106: false, 107: false, 
+					108: false, 109: false, 110: false, 111: false, 112: false, 113: false, 114: false, 115: false, 
+					116: false, 117: false, 118: false, 119: false, 120: false, 121: false };
 				// while (queue.length > 0)
 				while (queue.length > 0) {
 				  // set currentHex = queue.shift()
@@ -170,7 +191,7 @@ export default class HexBoard extends React.Component {
 				  // vistedHexs[currentHex.index] = true
 				  visitedHexs[currentHex.index] = true;
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
-				  if (currentHex.index === 21 || currentHex.index === 22 || currentHex.index ===  23 || currentHex.index === 24 || currentHex.index === 25) {
+				  if (currentHex.index >= 111 && currentHex.index <= 121) {
 				   // return true
 				   	this.recordWin();
 				    this.declareWinner();
@@ -208,10 +229,15 @@ export default class HexBoard extends React.Component {
 		//set an array of red top hexs
 		var blueSide = [];
 		blueSide.push(this.state.hexBoard[0]);
-		blueSide.push(this.state.hexBoard[5]);
-		blueSide.push(this.state.hexBoard[10]);
-		blueSide.push(this.state.hexBoard[15]);
-		blueSide.push(this.state.hexBoard[20]);
+		blueSide.push(this.state.hexBoard[11]);
+		blueSide.push(this.state.hexBoard[22]);
+		blueSide.push(this.state.hexBoard[33]);
+		blueSide.push(this.state.hexBoard[44]);
+		blueSide.push(this.state.hexBoard[55]);
+		blueSide.push(this.state.hexBoard[66]);
+		blueSide.push(this.state.hexBoard[77]);
+		blueSide.push(this.state.hexBoard[99]);
+		blueSide.push(this.state.hexBoard[110]);
 		// loop over the top array
 		for (let i = 0; i < blueSide.length; i++) {
 			// if redtop[i].capture === 'red'
@@ -222,12 +248,20 @@ export default class HexBoard extends React.Component {
 				queue.push(blueSide[i]);
 				// set visitedHexs = {}
 				var visitedHexs = {
-					0: false, 1: false, 2: false, 3: false, 4: false,
-					 5: false, 6: false, 7: false, 8: false, 9: false, 
-					 10: false, 11: false, 12: false, 13: false, 14: false, 
-					 15: false, 16: false, 17: false, 18: false, 19: false, 
-					 20: false, 21: false, 22: false, 23: false, 24: false, 
-					 25: false};
+					0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 
+					10: false, 11: false, 12: false, 13: false, 14: false, 15: false, 16: false, 17: false, 18: false, 
+					19: false, 20: false, 21: false, 22: false, 23: false, 24: false, 25: false, 26: false, 27: false, 
+					28: false, 29: false, 30: false, 31: false, 32: false, 33: false, 34: false, 35: false, 36: false, 
+					37: false, 38: false, 39: false, 40: false, 41: false, 42: false, 43: false, 44: false, 45: false, 
+					46: false, 47: false, 48: false, 49: false, 50: false, 51: false, 52: false, 53: false, 54: false, 
+					55: false, 56: false, 57: false, 58: false, 59: false, 60: false, 61: false, 62: false, 63: false, 
+					64: false, 65: false, 66: false, 67: false, 68: false, 69: false, 70: false, 71: false, 72: false, 
+					73: false, 74: false, 75: false, 76: false, 77: false, 78: false, 79: false, 80: false, 81: false, 
+					82: false, 83: false, 84: false, 85: false, 86: false, 87: false, 88: false, 89: false, 90: false, 
+					91: false, 92: false, 93: false, 94: false, 95: false, 96: false, 97: false, 98: false, 99: false, 
+					100: false, 101: false, 102: false, 103: false, 104: false, 105: false, 106: false, 107: false, 
+					108: false, 109: false, 110: false, 111: false, 112: false, 113: false, 114: false, 115: false, 
+					116: false, 117: false, 118: false, 119: false, 120: false, 121: false };
 				// while (queue.length > 0)
 				while (queue.length > 0) {
 				  // set currentHex = queue.shift()
@@ -235,7 +269,7 @@ export default class HexBoard extends React.Component {
 				  // vistedHexs[currentHex.index] = true
 				  visitedHexs[currentHex.index] = true;
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
-				  if (currentHex.index === 5 || currentHex.index === 10 || currentHex.index === 15 || currentHex.index === 20 || currentHex.index === 25) {
+				  if ((currentHex.index % 11) === 0 ) {
 				  	// return true
 				  	console.log('Blue true');
 				  	this.recordWin();
@@ -273,7 +307,7 @@ export default class HexBoard extends React.Component {
 	hexClicked(index) {
 		console.log('clicked', index);
 		if (this.state.hexBoard[index - 1].capture === 'green') {
-			var boardCopy = this.state.hexBoard.slice(0,25);
+			var boardCopy = this.state.hexBoard.slice(0, 121);
 			boardCopy[index - 1].capture = this.state.currentTurn;
 			if (this.state.currentTurn === 'Red') {
 				this.redWinCondition();
@@ -287,7 +321,7 @@ export default class HexBoard extends React.Component {
 	}
 
 	declareWinner() {
-		var boardCopy = this.state.hexBoard.slice(0,25);
+		var boardCopy = this.state.hexBoard.slice(0, 121);
 		for (let i = 0; i < boardCopy.length; i++) {
 			boardCopy[i].capture = this.state.currentTurn;
 			this.setState({
@@ -338,7 +372,7 @@ export default class HexBoard extends React.Component {
 		var context = this;
 		return (
 			<div>
-			<div>{this.state.currentTurn} Player</div>
+			<h3>{this.state.currentTurn} Player</h3>
 			<div id="row_1">
 			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
@@ -353,6 +387,24 @@ export default class HexBoard extends React.Component {
 			</div>
 			<div id="row_5">
 			  {this.state.hexRow_5.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			</div>
+			<div id="row_6">
+			  {this.state.hexRow_6.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			</div>
+			<div id="row_7">
+			  {this.state.hexRow_7.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			</div>
+			<div id="row_8">
+			  {this.state.hexRow_8.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			</div>
+			<div id="row_9">
+			  {this.state.hexRow_9.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			</div>
+			<div id="row_10">
+			  {this.state.hexRow_10.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			</div>
+			<div id="row_11">
+			  {this.state.hexRow_11.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			</div>
 			)
