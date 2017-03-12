@@ -21,6 +21,7 @@ export default class HexBoard extends React.Component {
 		this.blueWinCondition = this.blueWinCondition.bind(this);
 		this.declareWinner = this.declareWinner.bind(this);
 		this.saveGame = this.saveGame.bind(this);
+		this.recordWin = this.recordWin.bind(this);
 	}
 
 	componentDidMount() {
@@ -171,6 +172,7 @@ export default class HexBoard extends React.Component {
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
 				  if (currentHex.index === 21 || currentHex.index === 22 || currentHex.index ===  23 || currentHex.index === 24 || currentHex.index === 25) {
 				   // return true
+				   	this.recordWin();
 				    this.declareWinner();
 				  	return true;
 				  } else {
@@ -236,6 +238,7 @@ export default class HexBoard extends React.Component {
 				  if (currentHex.index === 5 || currentHex.index === 10 || currentHex.index === 15 || currentHex.index === 20 || currentHex.index === 25) {
 				  	// return true
 				  	console.log('Blue true');
+				  	this.recordWin();
 				  	this.declareWinner();
 				  	return true;
 				  } else {
@@ -291,6 +294,39 @@ export default class HexBoard extends React.Component {
 				hexBoard: boardCopy
 			})
 		}
+	}
+
+	recordWin() {
+		var username;
+		if (this.state.currentTurn === 'Red') {
+			username = this.props.playerOne;
+		}
+		if (this.state.currentTurn === 'Blue') {
+			username = this.props.playerTwo;
+		}
+		$.ajax({
+			url: 'http://localhost:3000/wins?username=' + username,
+			method: 'GET',
+			success: (data) => {
+					console.log('post-req', username)
+					var wins = data[0].wins + 1;
+					$.ajax({
+						url: 'http://localhost:3000/win',
+						method: 'POST',
+						data: JSON.stringify({"username": username, 'wins': wins}),
+						headers: {'Content-Type': 'application/json'},
+						success: function() {
+							console.log('posted');
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					})
+			},
+			error: function(error) {
+				console.log(error)
+			}
+		})
 	}
 
 	saveGame() {

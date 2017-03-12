@@ -58,8 +58,8 @@ class App extends React.Component {
 				console.log(error)
 			}
 		})
-
 	}
+
 	renderGame() {
 		this.addPlayersToDataBase(this.state.playerOne);
 		this.addPlayersToDataBase(this.state.playerTwo);
