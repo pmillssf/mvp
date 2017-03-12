@@ -17,10 +17,24 @@ app.get('/users', function (req, res) {
 	db.getUsername(username, function(err, result) {
 		if (err) {
 			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
-			res.status(400).send('Failed Query');
+			res.status(400).send(JSON.stringify('Failed Query'));
 		} else {
 			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
 			res.status(200).send(JSON.stringify(result));
+		}
+	})
+});
+
+app.post('/user', function (req, res) {
+	var username = req.body.username;
+	console.log(username);
+	db.createUser(username, function(err, result) {
+		if (err) {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(400).send(JSON.stringify('Failed Post'));
+		} else {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(201).send(JSON.stringify('Added!'));
 		}
 	})
 })

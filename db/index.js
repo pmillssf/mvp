@@ -16,7 +16,21 @@ function getUsername(username, callback) {
 		} else {
 			callback(null, results);
 		}
-	})
+	});
 }
 
+function createUser(username, callback) {
+	connection.query('insert into users (username, wins) values (?, 0)', [username], function(err, results) {
+		console.log(err);
+		if (err) {
+			callback(err, null);
+		} else {
+			console.log(results);
+			callback(null, results);
+		}
+	});
+}
+
+
 module.exports.getUsername = getUsername;
+module.exports.createUser = createUser;
