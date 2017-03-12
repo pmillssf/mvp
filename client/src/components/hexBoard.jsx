@@ -375,37 +375,37 @@ export default class HexBoard extends React.Component {
 			<div>
 			<h3>{this.state.currentTurn} Player</h3>
 			<div id="row_1">
-			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_2">
-			  {this.state.hexRow_2.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_2.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_3">
-			  {this.state.hexRow_3.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_3.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_4">
-			  {this.state.hexRow_4.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_4.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_5">
-			  {this.state.hexRow_5.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_5.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_6">
-			  {this.state.hexRow_6.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_6.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_7">
-			  {this.state.hexRow_7.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_7.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_8">
-			  {this.state.hexRow_8.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_8.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_9">
-			  {this.state.hexRow_9.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_9.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_10">
-			  {this.state.hexRow_10.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_10.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_11">
-			  {this.state.hexRow_11.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_11.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			</div>
 			)
