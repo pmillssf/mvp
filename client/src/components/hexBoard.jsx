@@ -19,6 +19,7 @@ export default class HexBoard extends React.Component {
 		this.hexClicked = this.hexClicked.bind(this);
 		this.redWinCondition = this.redWinCondition.bind(this);
 		this.blueWinCondition = this.blueWinCondition.bind(this);
+		this.declareWinner = this.declareWinner.bind(this);
 	}
 
 	componentDidMount() {
@@ -169,7 +170,7 @@ export default class HexBoard extends React.Component {
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
 				  if (currentHex.index === 21 || currentHex.index === 22 || currentHex.index ===  23 || currentHex.index === 24 || currentHex.index === 25) {
 				   // return true
-				   console.log('red winner!!!')
+				    this.declareWinner();
 				  	return true;
 				  } else {
 
@@ -232,8 +233,9 @@ export default class HexBoard extends React.Component {
 				  visitedHexs[currentHex.index] = true;
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
 				  if (currentHex.index === 5 || currentHex.index === 10 || currentHex.index === 15 || currentHex.index === 20 || currentHex.index === 25) {
-				   // return true
-				   console.log('Blue true');
+				  	// return true
+				  	console.log('Blue true');
+				  	this.declareWinner();
 				  	return true;
 				  } else {
 
@@ -277,6 +279,16 @@ export default class HexBoard extends React.Component {
 				this.blueWinCondition();
 			} 
 			this.setState({hexboard: boardCopy, currentTurn: this.state.currentTurn === 'Red' ? 'Blue' : 'Red'});
+		}
+	}
+
+	declareWinner() {
+		var boardCopy = this.state.hexBoard.slice(0,25);
+		for (let i = 0; i < boardCopy.length; i++) {
+			boardCopy[i].capture = this.state.currentTurn;
+			this.setState({
+				hexBoard: boardCopy
+			})
 		}
 	}
 

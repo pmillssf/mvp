@@ -31,8 +31,10 @@ class App extends React.Component {
 			<div>
 				<input value={this.state.playerOne} onChange={this.playerOneChange} maxLength={10}></input>
 				<input value={this.state.playerTwo} onChange={this.playerTwoChange} maxLength={10}></input>
-				<button>start game</button>
-				<button>Load save</button>
+			</div>
+			<div>
+				<button>New Game</button>
+				<button>Load Game</button>
 			</div>
 			<HexBoard />
 		</div>
