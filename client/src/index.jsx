@@ -7,14 +7,30 @@ import HexBoard from './components/hexBoard.jsx'
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			playerOne: 'Red',
+			playerTwo: 'Blue',
+		}
+		this.playerOneChange = this.playerOneChange.bind(this);
+		this.playerTwoChange = this.playerTwoChange.bind(this);
+	}
+	playerOneChange(e) {
+		this.setState({
+			playerOne: e.target.value
+		});
+	}
+	playerTwoChange(e) {
+		this.setState({
+			playerTwo: e.target.value
+		})
 	}
 	render() {
 		return <div>
 			<h1>Welcome</h1>
 			<h3>Game Rules</h3>
 			<div>
-				<input value='Username_1'></input>
-				<input value='Username_2'></input>
+				<input value={this.state.playerOne} onChange={this.playerOneChange} maxLength={10}></input>
+				<input value={this.state.playerTwo} onChange={this.playerTwoChange} maxLength={10}></input>
 				<button>start game</button>
 				<button>Load save</button>
 			</div>
