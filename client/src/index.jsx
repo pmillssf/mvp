@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import Hexagon from 'react-hexagon';
 import HexRow from './components/hexRow.jsx';
 import HexBoard from './components/hexBoard.jsx'
+import $ from 'jquery';
 
 class App extends React.Component {
 	constructor(props) {
@@ -15,18 +16,53 @@ class App extends React.Component {
 		this.playerOneChange = this.playerOneChange.bind(this);
 		this.playerTwoChange = this.playerTwoChange.bind(this);
 		this.renderGame = this.renderGame.bind(this);
+		this.addPlayersToDataBase = this.addPlayersToDataBase.bind(this);
 	}
+
 	playerOneChange(e) {
 		this.setState({
 			playerOne: e.target.value
 		});
 	}
+
 	playerTwoChange(e) {
 		this.setState({
 			playerTwo: e.target.value
 		})
 	}
+
+	addPlayersToDataBase(username) {
+		console.log(username);
+		$.ajax({
+			url: 'http://localhost:3000/users?username=' + username,
+			method: 'GET',
+			success: (data) => {
+				if (data[0] === undefined) {
+					console.log('post-req', username)
+
+					$.ajax({
+						url: 'http://localhost:3000/user',
+						method: 'POST',
+						data: JSON.stringify({"username": username}),
+						headers: {'Content-Type': 'application/json'},
+						success: function() {
+							console.log('posted');
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					})
+				}
+			},
+			error: function(error) {
+				console.log(error)
+			}
+		})
+
+	}
 	renderGame() {
+		this.addPlayersToDataBase(this.state.playerOne);
+		this.addPlayersToDataBase(this.state.playerTwo);
 		this.setState({
 			startGame: !this.state.startGame
 		})

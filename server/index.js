@@ -10,8 +10,24 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../client/dist/')));
 
+app.options('/users', function(req, res) {
+  res.writeHead(200, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  })
+  res.end();
+});
+
+app.options('/user', function(req, res) {
+  res.writeHead(200, {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  })
+  res.end();
+});
 
 app.get('/users', function (req, res) {
+	console.log(req.url);
 	var username = url.parse(req.url).query.split('=')[1];
 	console.log(username);
 	db.getUsername(username, function(err, result) {
@@ -26,6 +42,7 @@ app.get('/users', function (req, res) {
 });
 
 app.post('/user', function (req, res) {
+	console.log('req.body', req.body);
 	var username = req.body.username;
 	console.log(username);
 	db.createUser(username, function(err, result) {
@@ -108,6 +125,7 @@ app.post('/win', function (req, res) {
 	})
 
 })
+
 
 
 app.listen(3000, function() {
