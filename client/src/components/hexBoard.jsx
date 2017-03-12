@@ -204,11 +204,11 @@ export default class HexBoard extends React.Component {
 	blueWinCondition() {
 		//set an array of red top hexs
 		var blueSide = [];
-		blueSide.push(this.state.hexBoard[1]);
-		blueSide.push(this.state.hexBoard[6]);
-		blueSide.push(this.state.hexBoard[11]);
-		blueSide.push(this.state.hexBoard[16]);
-		blueSide.push(this.state.hexBoard[21]);
+		blueSide.push(this.state.hexBoard[0]);
+		blueSide.push(this.state.hexBoard[5]);
+		blueSide.push(this.state.hexBoard[10]);
+		blueSide.push(this.state.hexBoard[15]);
+		blueSide.push(this.state.hexBoard[20]);
 		// loop over the top array
 		for (let i = 0; i < blueSide.length; i++) {
 			// if redtop[i].capture === 'red'
