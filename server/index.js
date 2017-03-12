@@ -68,6 +68,18 @@ app.post('/game', function (req, res) {
 	})
 })
 
+app.get('/leaders', function (req, res) {
+	db.leaderBoard(function (err, result) {
+		if (err) {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(400).send(JSON.stringify('Failed Query'));
+		} else {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(200).send(JSON.stringify(result));
+		}
+	})
+})
+
 app.listen(3000, function() {
 	console.log('App is listening on port 3000!');
 });

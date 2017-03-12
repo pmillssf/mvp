@@ -53,8 +53,19 @@ function saveGame(gameObj, callback) {
 	 });
 }
 
+function leaderBoard(callback) {
+	connection.query('SELECT * from users', function (err, results) {
+		if (err) {
+			callback(err, null);
+		} else {
+			callback(null, results);
+		}
+	});
+}
+
 
 module.exports.getUsername = getUsername;
 module.exports.createUser = createUser;
 module.exports.getGames = getGames;
 module.exports.saveGame = saveGame;
+module.exports.leaderBoard = leaderBoard;
