@@ -55,6 +55,19 @@ app.get('/games', function (req, res) {
 	})
 })
 
+app.post('/game', function (req, res) {
+	var gameObj = req.body.gameObj;
+	db.saveGame(gameObj, function (err, result) {
+		if (err) {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(400).send(JSON.stringify('Failed Post'));
+		} else {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(201).send(JSON.stringify('Added!'));
+		}
+	})
+})
+
 app.listen(3000, function() {
 	console.log('App is listening on port 3000!');
 });

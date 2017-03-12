@@ -42,7 +42,19 @@ function getGames(player1, player2, callback) {
 	});
 }
 
+function saveGame(gameObj, callback) {
+	connection.query('insert into savedgames (playerone, playertwo, gamename, gamestate, savedate) values (?, ?, ?, ?, ?)',
+	 [gameObj.playerone, gameObj.playertwo, gameObj.gamename, gameObj.gamestate, gameObj.date], function (err, results) {
+		if (err) {
+			callback(err, null);
+		} else {
+			callback(null, results);
+		}
+	 });
+}
+
 
 module.exports.getUsername = getUsername;
 module.exports.createUser = createUser;
 module.exports.getGames = getGames;
+module.exports.saveGame = saveGame;
