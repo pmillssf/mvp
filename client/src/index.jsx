@@ -96,13 +96,16 @@ class App extends React.Component {
 		return <div>
 			<h1>Welcome</h1>
 			<h3>Game Rules</h3>
+			<p>
+				"Players alternate clicking on unoccupied hexagons (green hexagons) in an attempt to link their opposite sides of the board in an unbroken chain. 
+				Red is trying to connect top - bottom. Blue is trying to connect left - right. Red plays first. Good Luck!"
+			</p>
 			<div>
 				<input value={this.state.playerOne} onChange={this.playerOneChange} maxLength={10}></input>
 				<input value={this.state.playerTwo} onChange={this.playerTwoChange} maxLength={10}></input>
 			</div>
 			<div>
 				<button onClick={this.renderGame}>New Game</button>
-				<button>Load Game</button>
 				<button onClick={this.renderLeaderBoard}>Leader Board</button>
 			</div>
 			{this.state.startGame ? <HexBoard playerOne={this.state.playerOne} playerTwo = {this.state.playerTwo}/> : ''}
