@@ -73,6 +73,16 @@ function retrieveWins(username, callback) {
 	});
 }
 
+function updateWins(username, wins, callback) {
+	connection.query('update users set wins = ? where users.username = ?', [wins, username], function (err, results) {
+		if (err) {
+			callback(err, null);
+		} else {
+			callback(null, results);
+		}
+	});
+}
+
 
 module.exports.getUsername = getUsername;
 module.exports.createUser = createUser;
@@ -80,3 +90,4 @@ module.exports.getGames = getGames;
 module.exports.saveGame = saveGame;
 module.exports.leaderBoard = leaderBoard;
 module.exports.retrieveWins = retrieveWins;
+module.exports.updateWins = updateWins;

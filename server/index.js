@@ -94,6 +94,20 @@ app.get('/wins', function (req, res) {
 	})
 })
 
+app.post('/win', function (req, res) {
+	var username = req.body.username;
+	var wins = req.body.wins;
+	db.updateWins(username, wins, function (err, result) {
+		if (err) {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(400).send(JSON.stringify('Failed Post'));
+		} else {
+			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
+			res.status(201).send(JSON.stringify('updated!'));
+		}
+	})
+
+})
 
 
 app.listen(3000, function() {
