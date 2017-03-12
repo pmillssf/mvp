@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 function getUsername(username, callback) {
-	connection.query('SELECT users.username FROM users WHERE users.username = ?', [username], function(err, results) {
+	connection.query('SELECT users.username, users.wins FROM users WHERE users.username = ?', [username], function(err, results) {
 		if (err) {
 			callback(err, null);
 		} else {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Hex from './hex.jsx';
 import Hexagon from 'react-hexagon';
+import $ from 'jquery';
 
 export default class HexBoard extends React.Component {
 	constructor(props){
