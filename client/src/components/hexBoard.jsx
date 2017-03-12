@@ -20,6 +20,7 @@ export default class HexBoard extends React.Component {
 		this.redWinCondition = this.redWinCondition.bind(this);
 		this.blueWinCondition = this.blueWinCondition.bind(this);
 		this.declareWinner = this.declareWinner.bind(this);
+		this.saveGame = this.saveGame.bind(this);
 	}
 
 	componentDidMount() {
@@ -292,6 +293,10 @@ export default class HexBoard extends React.Component {
 		}
 	}
 
+	saveGame() {
+
+	}
+
 	render() {
 
 		var context = this;
@@ -299,19 +304,19 @@ export default class HexBoard extends React.Component {
 			<div>
 			<div>{this.state.currentTurn} Player</div>
 			<div id="row_1">
-			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_2">
-			  {this.state.hexRow_2.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_2.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_3">
-			  {this.state.hexRow_3.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_3.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_4">
-			  {this.state.hexRow_4.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_4.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			<div id="row_5">
-			  {this.state.hexRow_5.map((hex) => <Hexagon style={{fill: hex.capture}} onClick={context.hexClicked.bind(context, hex.index)}/>)}
+			  {this.state.hexRow_5.map((hex) => <Hexagon style={{fill: hex.capture}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
 			</div>
 			</div>
 			)
