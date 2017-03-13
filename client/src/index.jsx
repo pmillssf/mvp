@@ -94,14 +94,19 @@ class App extends React.Component {
 	}
 	render() {
 		return <div>
-			<h1>Welcome</h1>
-			<h3>Game Rules</h3>
+			<h1>Hex!</h1>
+			<h3>How to Play:</h3>
 			<p>
-				"Players alternate clicking on unoccupied hexagons (green hexagons) in an attempt to link their opposite sides of the board in an unbroken chain. 
-				Red is trying to connect top - bottom. Blue is trying to connect left - right. Red plays first. Good Luck!"
+				Hex is a two person game, so grab a buddy! Players alternate clicking on unoccupied hexagons (the green ones) to try and link their sides of the board in an unbroken chain. 
+			 Red is trying to connect the top side with the bottom side. Blue is trying to connect the left side with the right side. Red plays first. Good Luck!
 			</p>
-			<div>
+			<h3>Ready to Play?</h3>
+			<p>
+			Be sure to add your usernames to save your win record. Click on New Game to start or Leader Board to see the Hex Masters!
+			</p>
+			<div> Player One:
 				<input value={this.state.playerOne} onChange={this.playerOneChange} maxLength={10}></input>
+			 Player Two:
 				<input value={this.state.playerTwo} onChange={this.playerTwoChange} maxLength={10}></input>
 			</div>
 			<div>

@@ -1,5 +1,21 @@
+body {
+	max-width: 800px;
+	margin: auto;
+	background-color: grey;
+	font-family: 'Vollkorn', serif;
+}
+
+h3 {
+	color: #c31;
+	font-family: 'Unica One', cursive;
+}
 table {
 	width: 100%;
+	margin-top: 15px;
+}
+input {
+	margin: 5px;
+	font-family: 'Vollkorn', serif;
 }
 
 th, td {
@@ -8,8 +24,29 @@ th, td {
 	padding: 15px;
 }
 
+th {
+	color: #c31;
+}
+
+button {
+	margin-right: 10px;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: solid 2px black;
+	background-color: grey;
+	font-size: 16px;
+	font-family: 'Unica One', cursive;
+
+}
 svg {
 	width: 9.09%;
+}
+
+#board {
+	margin-bottom: 30px;
+}
+#turn {
+	padding-left: 25%;
 }
 
 #row_1 {
@@ -17,70 +54,70 @@ svg {
 	width: 68.75%;
 }
 #row_2 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 3.125%;
 	padding-right: 28.125%;
 	width: 68.75%;
 }
 
 #row_3 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 6.25%;
 	padding-right: 21.875%;
 	width: 68.75%;
 }
 
 #row_4 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 9.375%;
 	padding-right: 15.625%;
 	width: 68.75%;
 }
 
 #row_5 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 12.5%;
 	padding-right: 18.75%;
 	width: 68.75%;
 }
 
 #row_6 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 15.625%;
 	padding-right: 15.625%;
 	width: 68.75%;
 }
 
 #row_7 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 18.75%;
 	padding-right: 12.5%;
 	width: 68.75%;
 }
 
 #row_8 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 21.875%;
 	padding-right: 9.375%;
 	width: 68.75%;
 }
 
 #row_9 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 25%;
 	padding-right: 6.25%;
 	width: 68.75%;
 }
 
 #row_10 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 28.125%;
 	padding-right: 3.125%;
 	width: 68.75%;
 }
 
 #row_11 {
-	margin-top: -2.25%;
+	margin-top: -3%;
 	padding-left: 31.25%;
 	width: 68.75%;
 }
