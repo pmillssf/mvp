@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Hexagon from 'react-hexagon';
-import HexRow from './components/hexRow.jsx';
 import HexBoard from './components/hexBoard.jsx'
 import LeaderBoard from './components/leaderBoard.jsx'
 import $ from 'jquery';
