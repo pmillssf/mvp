@@ -367,7 +367,7 @@ export default class HexBoard extends React.Component {
 		var context = this;
 		return (
 			<div>
-			<h2 id="turn">It is {this.state.currentTurn} Players turn! </h2>
+			<h2 id="turn">It Is {this.state.currentTurn} Players Turn! </h2>
 			<div id="board">
 			<div id="row_1">
 			  {this.state.hexRow_1.map((hex) => <Hexagon style={{fill: hex.capture, stroke: '#000000', strokeWidth: 4}} key={hex.index} onClick={context.hexClicked.bind(context, hex.index)}/>)}
