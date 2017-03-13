@@ -51,9 +51,7 @@ app.options('/leaders', function(req, res) {
 });
 
 app.get('/users', function (req, res) {
-	console.log(req.url);
 	var username = url.parse(req.url).query.split('=')[1];
-	console.log(username);
 	db.getUsername(username, function(err, result) {
 		if (err) {
 			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
@@ -66,9 +64,7 @@ app.get('/users', function (req, res) {
 });
 
 app.post('/user', function (req, res) {
-	console.log('req.body', req.body);
 	var username = req.body.username;
-	console.log(username);
 	db.createUser(username, function(err, result) {
 		if (err) {
 			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
@@ -84,7 +80,6 @@ app.get('/games', function (req, res) {
 	var players = url.parse(req.url).query.split('&')
 	var playerOne = players[0].split('=')[1];
 	var playerTwo = players[1].split('=')[1];
-	console.log('playerOne', playerOne, 'playerTwo', playerTwo)
 	db.getGames(playerOne, playerTwo, function (err, result) {
 		if (err) {
 			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });
@@ -123,7 +118,6 @@ app.get('/leaders', function (req, res) {
 
 app.get('/wins', function (req, res) {
 	var username = url.parse(req.url).query.split('=')[1];
-	console.log(username);
 	db.retrieveWins(username, function(err, result) {
 		if (err) {
 			res.set({'content-type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*' });

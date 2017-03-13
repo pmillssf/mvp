@@ -156,7 +156,6 @@ export default class HexBoard extends React.Component {
 	}
 
 	redWinCondition() {
-		console.log('red check')
 		//set an array of red top hexs
 		var redTop = this.state.hexBoard.slice(0, 11);
 		// loop over the top array
@@ -220,7 +219,6 @@ export default class HexBoard extends React.Component {
 			}
 		}
 		// return false
-		console.log('keep trying');
 		return false;
 	}
 
@@ -271,7 +269,6 @@ export default class HexBoard extends React.Component {
 				  // if currentHex.index === 21 || 22 || 23 || 24 || 25
 				  if ((currentHex.index % 11) === 0 ) {
 				  	// return true
-				  	console.log('Blue true');
 				  	this.recordWin();
 				  	this.declareWinner();
 				  	return true;
@@ -300,12 +297,10 @@ export default class HexBoard extends React.Component {
 			}
 		}
 		// return false
-		console.log('keep trying blue');
 		return false;
 	}	
 
 	hexClicked(index) {
-		console.log('clicked', index);
 		if (this.state.hexBoard[index - 1].capture === '#006400') {
 			var boardCopy = this.state.hexBoard.slice(0, 121);
 			boardCopy[index - 1].capture = this.state.currentTurn;

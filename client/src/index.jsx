@@ -36,14 +36,11 @@ class App extends React.Component {
 
 
 	addPlayersToDataBase(username) {
-		console.log(username);
 		$.ajax({
 			url: 'http://localhost:3000/users?username=' + username,
 			method: 'GET',
 			success: (data) => {
 				if (data[0] === undefined) {
-					console.log('post-req', username)
-
 					$.ajax({
 						url: 'http://localhost:3000/user',
 						method: 'POST',
